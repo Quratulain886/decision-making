@@ -1,11 +1,46 @@
-import streamlit as st
+st.title("Calorie Predictor")
+st.write("Estimate the calories in your Starbucks drink.")
 
-# Inputs for custom values
-fat = st.number_input("Total Fat (g)", value=0.0, step=0.1)
-sugar = st.number_input("Sugar (g)", value=0.0, step=0.1)
-protein = st.number_input("Protein (g)", value=0.0, step=0.1)
+# 2. Number Inputs with +/- buttons (Exact design as image)
+total_fat = st.number_input(
+    "Total Fat (g)", 
+    min_value=0.0, 
+    value=5.00, 
+    step=0.5, 
+    format="%.2f"
+)
 
-# Dynamic Calorie Calculation (Fat: 9 cal/g, Sugar/Protein: 4 cal/g)
-estimated_calories = (fat * 9) + (sugar * 4) + (protein * 4)
+sugars = st.number_input(
+    "Sugars (g)", 
+    min_value=0.0, 
+    value=20.00, 
+    step=0.5, 
+    format="%.2f"
+)
 
-st.write(f"*Estimated Calories:* {estimated_calories:.1f} kcal")
+protein = st.number_input(
+    "Protein (g)", 
+    min_value=0.0, 
+    value=5.00, 
+    step=0.5, 
+    format="%.2f"
+)
+
+caffeine = st.number_input(
+    "Caffeine (mg)", 
+    min_value=0.0, 
+    value=100.00, 
+    step=5.0, 
+    format="%.2f"
+)
+
+# 3. Dynamic Calculation Logic
+# Fat = 9 kcal/g, Sugar = 4 kcal/g, Protein = 4 kcal/g
+calculated_calories = (total_fat * 9) + (sugars * 4) + (protein * 4)
+
+# 4. Predict Calories Button & Dynamic Result Display
+if st.button("Predict Calories"):
+    st.success(f"*Estimated Calories:* {calculated_calories:.2f} kcal")
+else:
+    # Buttons dabaane ke bina bhi live update niche show hota rahega
+    st.info(f"*Estimated Calories:* {calculated_calories:.2f} kcal")
