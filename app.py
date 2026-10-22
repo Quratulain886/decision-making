@@ -1,4 +1,4 @@
-import streamlist as st
+import streamlit as st
 # 1. Main Title and Subtitle (Same Interface)
 st.title("Calorie Predictor")
 st.write("Estimate the calories in your Starbucks drink.")
