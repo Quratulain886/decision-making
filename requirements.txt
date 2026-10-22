@@ -1,4 +1,4 @@
-IPython
-joblib
+streamlit
+matplotlib
 pandas
 scikit-learn
